@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff20f7;
+  background: #04d7af;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2659,4 +2659,42 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
+}
+body {
+  background: url("/images/flyhourse.jpg") no-repeat;
+/*背景垂直、水平居中*/
+  background-position: center cneter;
+/*当内容高度大于图片高度时，背景图像的位置相对于viewport固定*/
+  background-attachment: fixed;
+/*让背景图基于容器的大小伸缩*/
+  background-size: cover;
+/*设置背景颜色，背景图加载过程中会显示背景色*/
+  background-color: rgba(0,0,0,0.5);
+}
+.menu {
+  border-radius: 20px;
+  background: rgba(255,255,255,0.8) none repeat scroll !important;
+}
+.content {
+  border-radius: 20px;
+  padding: 10px 30px 10px 30px;
+  background: rgba(255,255,255,0.8) none repeat scroll !important;
+}
+a.brand {
+  background: rgba(255,255,255,0);
+}
+.site-title {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 56px;
+  font-size: 48px;
+  color: #f5f5f5;
+  font-wight: normal;
+  font-family: 'Lobster Two', 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.site-subtitile {
+  margin-top: 10px;
+  font-size: 18px;
+  font-wight: normal;
+  color: #999;
 }
