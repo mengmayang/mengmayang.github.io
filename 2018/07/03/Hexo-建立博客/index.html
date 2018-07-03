@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="RunningSheep&#39;s BLOG">
 <meta property="og:description" content="Hexo 建立个人博客比较重要的几条命令 1.本地测试1hexo server 2.部署到github上1hexo deploy -g -g 表示部署在remote之前先生成静态文件 3.新建md文件1hexo new &quot;article_name&quot; 4.建tags，categories，about123hexo new page tagshexo new page abouthexo new pa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-03T08:47:35.607Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/03/Hexo-建立博客/logo.jpg">
+<meta property="og:updated_time" content="2018-07-03T09:56:33.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 建立博客">
 <meta name="twitter:description" content="Hexo 建立个人博客比较重要的几条命令 1.本地测试1hexo server 2.部署到github上1hexo deploy -g -g 表示部署在remote之前先生成静态文件 3.新建md文件1hexo new &quot;article_name&quot; 4.建tags，categories，about123hexo new page tagshexo new page abouthexo new pa">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/03/Hexo-建立博客/logo.jpg">
 
 
 
@@ -369,6 +371,11 @@
 <p>-g 表示部署在remote之前先生成静态文件</p>
 <h3 id="3-新建md文件"><a href="#3-新建md文件" class="headerlink" title="3.新建md文件"></a>3.新建md文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"article_name"</span></span><br></pre></td></tr></table></figure>
 <h3 id="4-建tags，categories，about"><a href="#4-建tags，categories，about" class="headerlink" title="4.建tags，categories，about"></a>4.建tags，categories，about</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br><span class="line">hexo new page about</span><br><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<h3 id="5-怎么插入图片"><a href="#5-怎么插入图片" class="headerlink" title="5.怎么插入图片"></a>5.怎么插入图片</h3><p>首先将<font color="red"> _config.yml </font> 中的<font color="red">post_asset_folder</font>设为true</p>
+<p>然后在根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
+<p>之后把图片放在和文章名字一样的文件夹下</p>
+<p>使用时<font color=""> <img src="/2018/07/03/Hexo-建立博客/logo.jpg" alt="loge"></font></p>
+<p>其中[]里面不写文字则图片没有标题</p>
 
       
     </div>
@@ -410,6 +417,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/03/XSSH隧道/" rel="prev" title="XSSH隧道">
+                XSSH隧道 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -490,7 +501,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -501,7 +512,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -512,7 +523,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -545,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-建立个人博客"><span class="nav-number">1.</span> <span class="nav-text">Hexo 建立个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-本地测试"><span class="nav-number">1.1.</span> <span class="nav-text">1.本地测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-部署到github上"><span class="nav-number">1.2.</span> <span class="nav-text">2.部署到github上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-新建md文件"><span class="nav-number">1.3.</span> <span class="nav-text">3.新建md文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-建tags，categories，about"><span class="nav-number">1.4.</span> <span class="nav-text">4.建tags，categories，about</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-建立个人博客"><span class="nav-number">1.</span> <span class="nav-text">Hexo 建立个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-本地测试"><span class="nav-number">1.1.</span> <span class="nav-text">1.本地测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-部署到github上"><span class="nav-number">1.2.</span> <span class="nav-text">2.部署到github上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-新建md文件"><span class="nav-number">1.3.</span> <span class="nav-text">3.新建md文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-建tags，categories，about"><span class="nav-number">1.4.</span> <span class="nav-text">4.建tags，categories，about</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-怎么插入图片"><span class="nav-number">1.5.</span> <span class="nav-text">5.怎么插入图片</span></a></li></ol></li></ol></div>
             
 
           </div>
