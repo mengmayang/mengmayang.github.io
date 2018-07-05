@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[新电脑安装工作软件]]></title>
+    <url>%2F2018%2F07%2F05%2F%E6%96%B0%E7%94%B5%E8%84%91%E5%AE%89%E8%A3%85%E5%B7%A5%E4%BD%9C%E8%BD%AF%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[新电脑安装工作软件今天公司发了新电脑，开心之余又要展开安各种软件的繁琐过程，这里记录一下。 时间：2018/7/5基本配置 基本账户信息配置,安装网卡驱动 磁盘分区：D盘放置工作内容相关的文件 公司VPN软件安装及测试 安装软件以下是常用的办公软件，所以就安在办公的电脑上。 基础软件：Chrome/微信/360驱动大师/7-Zip/百度云/有道词典 编程软件：python(pip)/R(Rstudio) 工具软件：Git/XAMPP/nodejs(npm/cnpm)/gcc(cygwin)/putty/xshell 需要安装cpm的按照下面命令安装： 1npm install -g cnpm --registry=https://registry.npm.taobao.org C编译器系统从来不自带也是。。。mingw貌似需要翻墙，所以还是下载cygwin吧。cygwin默认不安装gcc，所以按照下面命令安装。 1C:\cygwin64&gt;setup-x86_64.exe -q -P wget -P gcc-g++ -P make -P diffutils -P libmpfr-devel -P libgmp-devel -P libmpc-devel 编辑器：sublimeText/MarkdownPad2/editplus 都需要注册码，我以前的不能用了，需要在网上重新找。MarkdownPad2 实时显示还需要下载awesomium 配置git 工作环境配置T470p的git密钥12345678git config --global user.name &quot;mengmayang&quot;git config --global user.email &quot;mengmayang@163.com&quot;ssh-keygen -t rsa （连着按3次entrer）cat ~/.ssh/id_rsa.pub 关于多电脑操做hexo+git管理blog记在本地了，就不放在网上了。 软件链接下载的所有软件放在新申请的百度云账号了，别和原来的混了。 就先记这样吧。。。]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>工作</tag>
+        <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F07%2F05%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to RunningSheep’s blog! This is my first blog. I wish to use this blog to record my experience when learning the front-end knowledge and something interesting in my life.]]></content>
