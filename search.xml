@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F07%2F05%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to RunningSheep’s blog! This is my first blog. I wish to use this blog to record my experience when learning the front-end knowledge and something interesting in my life.]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[XSSH隧道]]></title>
     <url>%2F2018%2F07%2F03%2FXSSH%E9%9A%A7%E9%81%93%2F</url>
     <content type="text"><![CDATA[Xshell 4 SSH隧道跳转访问局域网服务器为什么要用ssh隧道？ 通过公网访问局域网中的服务器 局域网中某些服务器或阵列提供Web管理界面，需要通过公网打开该管理界面 设想情景：我想在家用自己的浏览器打开公司局域网中的web服务器做coding，此时就需要将公司局域网中web服务器的端口映射到我自己的电脑的端口。 前提：局域网中有某台服务器接了公网（双网口，一个WAN，一个LAN）方法 假设一台局域网中的中转服务器A： 公网IP：58.64.173.79 局域网IP：192.168.1.99 通过服务器A来配置ssh隧道，将远程局域网中的服务器各个应用端口映射到本机端口，然后通过本机IP和端口去访问局域网中的其他服务器端口。 假设局域网中一台服务器B 局域网IP：192.168.1.78 服务器B配置了内部https端口443，我们可以将这个443端口映射到本机的某一个端口，然后在本机的这个端口打开https界面。 图一选中“中转服务器”这个session-&gt;右键-&gt;属性-&gt;隧道-&gt;添加-&gt;图二 打开浏览器，输入https://127.0.0.1:443(这个IP是本机IP，端口是图一中设置的本机 侦听端口，如果设置成其他的则改成相应的端口即可，等同于在局域网内登录https://192.168.1.78) 参考资料https://blog.csdn.net/jw2522/article/details/47065367]]></content>
@@ -15,7 +20,7 @@
   <entry>
     <title><![CDATA[Hexo 建立博客]]></title>
     <url>%2F2018%2F07%2F03%2FHexo-%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[Hexo 建立个人博客比较重要的几条命令 1.本地测试1hexo server 2.部署到github上1hexo deploy -g -g 表示部署在remote之前先生成静态文件 3.新建md文件1hexo new "article_name" 4.建tags，categories，about123hexo new page tagshexo new page abouthexo new page categories 5.怎么插入图片首先将 _config.yml 中的post_asset_folder设为true 然后在根目录下执行1npm install https://github.com/CodeFalling/hexo-asset-image --save 之后把图片放在和文章名字一样的文件夹下 使用时 其中[]里面不写文字则图片没有标题 6.修改网站图标将新图标放在/themes/next/source/images 修改next的主题配置文件: _config.yml 123favicon: small: /images/sheep.png medium:/images/sheep.png 参考资料https://blog.csdn.net/linshuhe1/article/details/52424573http://theme-next.iissnan.com/third-party-services.html#swfitype (gitbash 复制粘贴快捷键：Ctrl+ins/Shift+ins)]]></content>
+    <content type="text"><![CDATA[Hexo 建立个人博客比较重要的几条命令 1.本地测试1hexo server 2.部署到github上1hexo deploy -g -g 表示部署在remote之前先生成静态文件 3.新建md文件1hexo new "article_name" 4.建tags，categories，about123hexo new page tagshexo new page abouthexo new page categories 5.怎么插入图片首先将 _config.yml 中的post_asset_folder设为true 然后在根目录下执行1npm install https://github.com/CodeFalling/hexo-asset-image --save 之后把图片放在和文章名字一样的文件夹下 使用时 ![logo](文章名/logo.jpg) 其中[]里面不写文字则图片没有标题 6.修改网站图标将新图标放在/themes/next/source/images 修改next的主题配置文件: _config.yml 123favicon: small: /images/sheep.png medium:/images/sheep.png 参考资料https://blog.csdn.net/linshuhe1/article/details/52424573http://theme-next.iissnan.com/third-party-services.html#swfitype (gitbash 复制粘贴快捷键：Ctrl+ins/Shift+ins)]]></content>
       <categories>
         <category>前端</category>
       </categories>
@@ -23,10 +28,5 @@
         <tag>Hexo</tag>
         <tag>前端</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F07%2F03%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to RunningSheep’s blog! This is my first blog. I wish to use this blog to record my experience when learning the front-end knowledge and something interesting in my life.]]></content>
   </entry>
 </search>

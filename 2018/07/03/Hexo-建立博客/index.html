@@ -87,12 +87,10 @@
 <meta property="og:site_name" content="RunningSheep&#39;s BLOG">
 <meta property="og:description" content="Hexo 建立个人博客比较重要的几条命令 1.本地测试1hexo server 2.部署到github上1hexo deploy -g -g 表示部署在remote之前先生成静态文件 3.新建md文件1hexo new &quot;article_name&quot; 4.建tags，categories，about123hexo new page tagshexo new page abouthexo new pa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/07/03/Hexo-建立博客/logo.jpg">
-<meta property="og:updated_time" content="2018-07-04T01:45:44.261Z">
+<meta property="og:updated_time" content="2018-07-04T06:34:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 建立博客">
 <meta name="twitter:description" content="Hexo 建立个人博客比较重要的几条命令 1.本地测试1hexo server 2.部署到github上1hexo deploy -g -g 表示部署在remote之前先生成静态文件 3.新建md文件1hexo new &quot;article_name&quot; 4.建tags，categories，about123hexo new page tagshexo new page abouthexo new pa">
-<meta name="twitter:image" content="http://yoursite.com/2018/07/03/Hexo-建立博客/logo.jpg">
 
 
 
@@ -364,6 +362,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/03/Hexo-建立博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/03/Hexo-建立博客/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -408,7 +417,7 @@
 <h3 id="5-怎么插入图片"><a href="#5-怎么插入图片" class="headerlink" title="5.怎么插入图片"></a>5.怎么插入图片</h3><p>首先将<font color="red"> _config.yml </font> 中的<font color="red">post_asset_folder</font>设为true</p>
 <p>然后在根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
 <p>之后把图片放在和文章名字一样的文件夹下</p>
-<p>使用时<font color=""> <img src="/2018/07/03/Hexo-建立博客/logo.jpg" alt="loge"></font></p>
+<p>使用时<font color="red"> ![logo](文章名/logo.jpg)</font></p>
 <p>其中[]里面不写文字则图片没有标题</p>
 <h3 id="6-修改网站图标"><a href="#6-修改网站图标" class="headerlink" title="6.修改网站图标"></a>6.修改网站图标</h3><p>将新图标放在/themes/next/source/images</p>
 <p>修改next的主题配置文件: _config.yml</p>
@@ -471,10 +480,6 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/03/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
@@ -513,6 +518,18 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
 
 
@@ -782,6 +799,8 @@
 
 
 
+
+
   
   
 
@@ -803,6 +822,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/07/03/Hexo-建立博客/';
+          this.page.identifier = '2018/07/03/Hexo-建立博客/';
+          this.page.title = 'Hexo 建立博客';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -818,6 +857,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
