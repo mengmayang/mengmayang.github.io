@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[安装BC-Linux]]></title>
+    <url>%2F2018%2F07%2F11%2F%E5%AE%89%E8%A3%85BC-Linux%2F</url>
+    <content type="text"><![CDATA[本地虚拟机安装BC-Linux1. 安装虚拟机我安装的是VMware 10，win10系统需要进入bios，开启虚拟支持 （1）win10 进入bios 开始-&gt;设置-&gt;更新和安全-&gt;恢复-&gt;高级启动（立即重新启动）-&gt;选择进入bios （2）bios开启虚拟支持 Security-&gt;Intel Virtual Technology 选择 Enabled F10 save and exit 2. 安装BC-Linux 7.3（1）下载系统镜像 http://mirrors.bclinux.org/bclinux/isos/BCLinux-R7-U3-Server-x86_64-dvd.iso （2）安装配置 硬盘设了150G 分区: /home:50G /:90G /boot:1G /swap:4G(一般为物理内存2倍) /var:4G (存放日志文件) 3. 重启4. 宿主机访问虚拟机（1）虚拟机网络连接方式选择桥接 （2）查看虚拟机的ip地址 （3）修改onboot vi /etc/sysconfig/network-scripts/ifcfg-ens33 （4）再次查看虚拟机的ip （5）查看网络是否通 （6）用putty等ssh到虚拟机的ip即可 以上的步骤是为了用ssh工具来访问虚拟机，因为VMWare的操作很不方便，接下来需要在宿主机的浏览器来访问虚拟机 5. 浏览器访问虚拟机服务器（1）增加源 在http://223.105.0.149/ 配置生成源信息 遇到问题 浏览器可以打开公网地址223.105.0.149，但是宿主机和虚拟机都ping不通，有可能是服务器防火墙限制了ping，解决方案，安装第三方源，见（2） （2）yum增加源 注意做备份 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo yum clean all yum makecache （3）开启apache并关闭防火墙 service httpd start service iptables stop （4）宿主机访问虚拟机的apache默认目录 172.20.19.151 虚拟机的ip是动态的，每次要查看一下，也可以设为静态的，比较方便 参考资料https://www.cnblogs.com/set-config/p/9040407.html https://blog.csdn.net/u010454030/article/details/78807281]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>工作</tag>
+        <tag>软件</tag>
+        <tag>linux</tag>
+        <tag>BC-Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vim 高级功能]]></title>
     <url>%2F2018%2F07%2F06%2Fvim-%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD%2F</url>
     <content type="text"><![CDATA[vim程序编辑器 高级功能1. 区块选择123456v:字符选择V:行选择Ctrl: 用长方形的方式选择资料y:复制p:粘贴d:删除 2. 多档案编辑这个功能牛逼啊！原来居然没有用过~~ 123456789101112:n - 编辑下一个文档:N - 编辑上一个文档:files - 列出目前这个vim开启的所有档案如：(1)vim test test1(2)4yy(3):n - 切换到下一个文件(4)G - 切换到最后一行(5)p - 粘贴(6)u - 按下多次u来还原原本的档案数据(7)wq 3. 多窗口功能我可能真的没有好好学习vim，牛逼的功能一个接着一个 情况一：文件很大，查阅后面的数据，想要对照前面的数据。是否需要使用ctrl+f和ctrl+b来前后查阅 情况二：有两个需要对照着看的文档，不想使用多档案编辑 能否将一个档案分割成多个窗口展现？ 1234567在指令模式输入:sp&#123;filename&#125;其中 不写filename表示将当前文件分成两个窗口，写filename表示两个窗口显示两个文件ctrl+w+j/↓ - 切换到下面的窗口ctrl+w+k/↑ - 切换到上面的窗口ctrl+w+q - 保存并离开 4. 环境设定与记录1~/.vimrc, ~/.viminfo 5. vim 环境参数123:set nu:nonu:set all 显示所有的环境参数设定值 6. vim 常用指令示意图]]></content>
@@ -8,8 +22,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>linux</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -44,7 +58,7 @@
   <entry>
     <title><![CDATA[Hexo 建立博客]]></title>
     <url>%2F2018%2F07%2F03%2FHexo-%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[Hexo 建立个人博客比较重要的几条命令 1.本地测试1hexo server 2.部署到github上1hexo deploy -g -g 表示部署在remote之前先生成静态文件 3.新建md文件1hexo new "article_name" 4.建tags，categories，about123hexo new page tagshexo new page abouthexo new page categories 5.怎么插入图片首先将 _config.yml 中的post_asset_folder设为true 然后在根目录下执行1npm install https://github.com/CodeFalling/hexo-asset-image --save 之后把图片放在和文章名字一样的文件夹下 使用时 ![logo](文章名/logo.jpg) 其中[]里面不写文字则图片没有标题 6.修改网站图标将新图标放在/themes/next/source/images 修改next的主题配置文件: _config.yml 123favicon: small: /images/sheep.png medium:/images/sheep.png 参考资料https://blog.csdn.net/linshuhe1/article/details/52424573http://theme-next.iissnan.com/third-party-services.html#swfitype (gitbash 复制粘贴快捷键：Ctrl+ins/Shift+ins)]]></content>
+    <content type="text"><![CDATA[Hexo 建立个人博客比较重要的几条命令 1.本地测试1hexo server 2.部署到github上1234567hexo deploy -gorhexo cleanhexo generatehexo deploy -g 表示部署在remote之前先生成静态文件 3.新建md文件1hexo new "article_name" 4.建tags，categories，about123hexo new page tagshexo new page abouthexo new page categories 5.怎么插入图片首先将 _config.yml 中的post_asset_folder设为true 然后在根目录下执行1npm install https://github.com/CodeFalling/hexo-asset-image --save 之后把图片放在和文章名字一样的文件夹下 使用时 ![logo](文章名/logo.jpg) 其中[]里面不写文字则图片没有标题 6.修改网站图标将新图标放在/themes/next/source/images 修改next的主题配置文件: _config.yml 123favicon: small: /images/sheep.png medium:/images/sheep.png 参考资料https://blog.csdn.net/linshuhe1/article/details/52424573http://theme-next.iissnan.com/third-party-services.html#swfitype (gitbash 复制粘贴快捷键：Ctrl+ins/Shift+ins)]]></content>
       <categories>
         <category>前端</category>
       </categories>
