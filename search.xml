@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[shell script]]></title>
+    <url>%2F2018%2F07%2F12%2Fshell-script%2F</url>
+    <content type="text"><![CDATA[写shell脚本1.交互式脚本read -p &quot;Please input your first name:&quot; firstname read -p &quot;Please input your last name:&quot; lastname echo -e &quot;\nYour full name is:&quot; $firstname $lastname 2.随日期变化read -p &quot;Please input your first name:&quot; firstuser filename=${fileuser:-&quot;filename&quot;} #当$fileuser没有设定或为控制，则用&quot;filename&quot;作为回传值 date1=$(date --date=&apos;2 days ago&apos; +%Y%m%d) #前两天的日期 date2=$(date --date=&apos;1 days ago&apos; +%Y%m%d) #前一天的日期 date3=$(date +%Y%m%d) #今天的日期 file1=${filename}${date1} file2=${filename}${date2} file3=${filename}${date3} touch &quot;file1&quot; touch &quot;file2&quot; touch &quot;file3&quot; 3.数值运算变量名=$((运算内容)) echo $((3*3)) 4.利用test进行测试test -e /dir &amp;&amp; echo &quot;exist&quot; || echo &quot;no exist&quot; #判断/dir是否存在 shell中的${}，##, %% , ：- ，：+， ？ 的使用假设我们定义了一个变量为： file=/dir1/dir2/dir3/my.file.txt 可以用${ }分别替换得到不同的值： ${file#*/}：删掉第一个/ 及其左边的字符串：dir1/dir2/dir3/my.file.txt ${file##*/}：删掉最后一个/ 及其左边的字符串：my.file.txt ${file#*.}：删掉第一个. 及其左边的字符串：file.txt ${file##*.}：删掉最后一个. 及其左边的字符串：txt ${file%/*}：删掉最后一个 / 及其右边的字符串：/dir1/dir2/dir3 ${file%%/*}：删掉第一个/ 及其右边的字符串：(空值) ${file%.*}：删掉最后一个 . 及其右边的字符串：/dir1/dir2/dir3/my.file ${file%%.*}：删掉第一个 . 及其右边的字符串：/dir1/dir2/dir3/my 记忆的方法为： &apos;#&apos; 是 去掉左边（键盘上#在 $ 的左边） %是去掉右边（键盘上% 在$ 的右边） 单一符号是最小匹配；两个符号是最大匹配 ${file:0:5}：提取最左边的5 个字节：/dir1 ${file:5:5}：提取第5 个字节右边的连续5个字节：/dir2 也可以对变量值里的字符串作替换： ${file/dir/path}：将第一个dir 替换为path：/path1/dir2/dir3/my.file.txt ${file//dir/path}：将全部dir 替换为path：/path1/path2/path3/my.file.txt 利用${ } 还可针对不同的变数状态赋值(沒设定、空值、非空值)： ${file-my.file.txt} ：假如$file 沒有设定，則使用my.file.txt 作传回值。(空值及非空值時不作处理) ${file:-my.file.txt} ：假如$file 沒有設定或為空值，則使用my.file.txt 作傳回值。(非空值時不作处理) ${file+my.file.txt} ：假如$file 設為空值或非空值，均使用my.file.txt 作傳回值。(沒設定時不作处理) ${file:+my.file.txt} ：若$file 為非空值，則使用my.file.txt 作傳回值。(沒設定及空值時不作处理) ${file=my.file.txt} ：若$file 沒設定，則使用my.file.txt 作傳回值，同時將$file 賦值為my.file.txt 。(空值及非空值時不作处理) ${file:=my.file.txt} ：若$file 沒設定或為空值，則使用my.file.txt 作傳回值，同時將$file 賦值為my.file.txt 。(非空值時不作处理) ${file?my.file.txt} ：若$file 沒設定，則將my.file.txt 輸出至STDERR。(空值及非空值時不作处理) ${file:?my.file.txt} ：若$file 没设定或为空值，则将my.file.txt 输出至STDERR。(非空值時不作处理) ${#var} 可计算出变量值的长度： ${#file} 可得到27 ，因为/dir1/dir2/dir3/my.file.txt 是27个字节 5.条件判断式if [ 条件判断式 ]; then ... fi 如： if [ &quot;$Yn&quot; == &quot;Y&quot; ] || [ &quot;$yn&quot; == &quot;y&quot; ]; then echo &quot;OK&quot; exit 0 fi *中括号两边加空格，变量也要加双引号 if [ situation1 ]; then ... elif [ situation2 ]; then ... else ... fi ####实例练习 计算毕业时间 !/bin/bash # program: # You input your graduation date, I calculate how many days before you graduate. # History: # 2018/7/12 yyqiao 1.0 version #1. 输入说明 echo &quot;This program will try to calculate:&quot; echo &quot;How many days before your graduation date...&quot; read -p &quot;Please input your graduation data (YYYYMMDD ex&gt;20180712):&quot; date2 #2. 判断输入内容格式是否正确 date_d=$(echo $date2 | grep &apos;[0-9]\{8\}&apos;) #是否有8位数字 if [ &quot;$date_d&quot; == &quot;&quot; ]; then echo &quot;Wrong input&quot; exit 1 fi #3.计算日期 declare -i date_gra=`date --date=&quot;$date_d&quot; +%s` declare -i date_now=`date +%s` declare -i date_total=$(($date_gra-$date_now)) declare -i date_d=$(($date_total/60/60/24)) if [ &quot;$date_total&quot; -gt &quot;0&quot; ]; then declare -i date_h=$(($date_total-$date_d*60*60*24)/60/60) echo &quot;You will graduate after $date_d days and $date_h hours&quot; else echo &quot;You had been graduation before: &quot; $((-1*$date_d)) &quot; ago&quot; fi 6.function 功能function funName () { ... } 7.循环loopwhile [ condition ] do ... done until [ condition ] do ... done for var in con1 con2 con3 ... do ... done 如： for vari in $(seq 1 100) do ... done filelist =$(ls $dir) for file in filelist do ... done for ((初始值;限制值;执行步长)) do ... done 如： for(( i=1; i&lt;=9; i=i+1 )) do ... done 8.shell script 调试sh [-nvx] script.sh -n: 不要执行，仅检查语法 -v: 执行前先将script内容输出到屏幕上 -x: 将script显示在频幕上]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[文件格式化处理]]></title>
     <url>%2F2018%2F07%2F11%2F%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%A4%84%E7%90%86-sed-awk%2F</url>
     <content type="text"><![CDATA[替换、删除、新增、提取特定行 分析关键字的使用，统计 sed 工具sed [-nefr] [动作] -n:经过sed处理的行被列出来 -e:命令行模式进行sed编辑 -f:直接将sed动作写在一个文件内，-f filename 可以执行filename中的sed动作 -r:sed动作支持扩展型正则表达式 -i:直接修改读取的文件内容，而非屏幕输出 动作： a:新增 c:替换 d:删除 i:插入 p:打印 s:替换（可搭配正则表达式） （1）以行为单位增加删除如： 列出并打印行号，同时删除2~5行 nl file | sed &apos;2,5d&apos; 列出并打印行号，同时删除3~最后一行 nl file | sed &apos;3,$d&apos; 第2行后面增加‘hello world’ nl file | sed &apos;2d, hello world&apos; 第2行前面增加‘hello world’ nl file | sed &apos;2i, hello world&apos; （2）以行为单位替换与显示如： 将2~5行内容替换成No 2-5 number nl file | sed &apos;2,5c No 2-5 number&apos; 列出5~7行 nl file | sed -n &apos;5,7p&apos; （3）部分数据的查找与替换sed &apos;s/要被替换的字符串/新的字符串/g&apos; 如：一行字符串为： intel addr:192.168.1.100 Bcast:192.168.1.255 Mask:255.255.255.0 想要得到192.168.1.100，可以这样写 sed &apos;s/^.*addr://g&apos; | sed &apos;s/Bcast.*$//g&apos; 删掉空白行 sed &apos;/^$/d&apos; （4）直接修改文件内容（危险操作）如： 将每一行结尾的.替换成! sed -i &apos;s/\.$/!/g&apos; file 最后一行添加“This is a test” sed -i &apos;$a This is a test&apos; awk 工具词频统计 awk -F &apos;\t&apos; &apos;{count[$1]++}END{for(i in count){print i count[i]}}&apos; diff比较两个文件或者两个目录之间的差异 diff [-bBi] from-file to-file patch和diff配合使用，用于新旧版本更新]]></content>
@@ -20,9 +33,9 @@
         <category>工作</category>
       </categories>
       <tags>
+        <tag>linux</tag>
         <tag>工作</tag>
         <tag>软件</tag>
-        <tag>linux</tag>
         <tag>BC-Linux</tag>
       </tags>
   </entry>
