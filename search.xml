@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[BCLinux安装教程新篇]]></title>
+    <url>%2F2018%2F07%2F19%2FBCLinux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E6%96%B0%E7%AF%87%2F</url>
+    <content type="text"><![CDATA[本地虚拟机安装BC-Linux 新篇因为上一篇的描述过于简单，以至于有同学反应可读性比较差，而且关于NAT还是桥接的选择可能会遇到问题，故新篇以全图的方式来展示安装过程。 1. 开启虚拟支持这一步上一篇有讲win10如何开启虚拟支持，可以自行百度。 2. 安装BC-Linux 7.3主机开始虚拟支持之后，就可以开始安装虚拟机了 首先安装VMWare(也可以选择其他Virualbox等)，VMWare安装在主机上，虚拟机可以选择安装在硬盘上。 文件-&gt;新建虚拟机-&gt;自定义（高级） 下一步 下一步 下一步 选择位置，可选移动硬盘；给虚拟机起名字 选择处理器数量 分配内存，2G可以 默认使用NAT，如果需要主机浏览器查看虚拟机上apache目录选择桥接 下一步 下一步 创建新的虚拟磁盘 分配磁盘大小并存储为单个文件 命名磁盘文件 完成 选择CD/DVD-&gt;选择系统镜像BC-Linux-xxxx.iso 开机 开始安装，选择语言,安装过程可以申请root用户以及其他用户 可选我要配置分区，自定义分区 安装完成后重启 查看ip地址，如图25，未显示ip su root 切换管理员用户 修改/etc/sysconfig/network-scripts/ifcfg-ens33文件中的ONBOOT修改为yes 再次查看ip，172.20.5.209 可以ping 通主机了]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>工作</tag>
+        <tag>软件</tag>
+        <tag>linux</tag>
+        <tag>BC-Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[shell script]]></title>
     <url>%2F2018%2F07%2F12%2Fshell-script%2F</url>
     <content type="text"><![CDATA[写shell脚本1.交互式脚本read -p &quot;Please input your first name:&quot; firstname read -p &quot;Please input your last name:&quot; lastname echo -e &quot;\nYour full name is:&quot; $firstname $lastname 2.随日期变化read -p &quot;Please input your first name:&quot; firstuser filename=${fileuser:-&quot;filename&quot;} #当$fileuser没有设定或为控制，则用&quot;filename&quot;作为回传值 date1=$(date --date=&apos;2 days ago&apos; +%Y%m%d) #前两天的日期 date2=$(date --date=&apos;1 days ago&apos; +%Y%m%d) #前一天的日期 date3=$(date +%Y%m%d) #今天的日期 file1=${filename}${date1} file2=${filename}${date2} file3=${filename}${date3} touch &quot;file1&quot; touch &quot;file2&quot; touch &quot;file3&quot; 3.数值运算变量名=$((运算内容)) echo $((3*3)) 4.利用test进行测试test -e /dir &amp;&amp; echo &quot;exist&quot; || echo &quot;no exist&quot; #判断/dir是否存在 shell中的${}，##, %% , ：- ，：+， ？ 的使用假设我们定义了一个变量为： file=/dir1/dir2/dir3/my.file.txt 可以用${ }分别替换得到不同的值： ${file#*/}：删掉第一个/ 及其左边的字符串：dir1/dir2/dir3/my.file.txt ${file##*/}：删掉最后一个/ 及其左边的字符串：my.file.txt ${file#*.}：删掉第一个. 及其左边的字符串：file.txt ${file##*.}：删掉最后一个. 及其左边的字符串：txt ${file%/*}：删掉最后一个 / 及其右边的字符串：/dir1/dir2/dir3 ${file%%/*}：删掉第一个/ 及其右边的字符串：(空值) ${file%.*}：删掉最后一个 . 及其右边的字符串：/dir1/dir2/dir3/my.file ${file%%.*}：删掉第一个 . 及其右边的字符串：/dir1/dir2/dir3/my 记忆的方法为： &apos;#&apos; 是 去掉左边（键盘上#在 $ 的左边） %是去掉右边（键盘上% 在$ 的右边） 单一符号是最小匹配；两个符号是最大匹配 ${file:0:5}：提取最左边的5 个字节：/dir1 ${file:5:5}：提取第5 个字节右边的连续5个字节：/dir2 也可以对变量值里的字符串作替换： ${file/dir/path}：将第一个dir 替换为path：/path1/dir2/dir3/my.file.txt ${file//dir/path}：将全部dir 替换为path：/path1/path2/path3/my.file.txt 利用${ } 还可针对不同的变数状态赋值(沒设定、空值、非空值)： ${file-my.file.txt} ：假如$file 沒有设定，則使用my.file.txt 作传回值。(空值及非空值時不作处理) ${file:-my.file.txt} ：假如$file 沒有設定或為空值，則使用my.file.txt 作傳回值。(非空值時不作处理) ${file+my.file.txt} ：假如$file 設為空值或非空值，均使用my.file.txt 作傳回值。(沒設定時不作处理) ${file:+my.file.txt} ：若$file 為非空值，則使用my.file.txt 作傳回值。(沒設定及空值時不作处理) ${file=my.file.txt} ：若$file 沒設定，則使用my.file.txt 作傳回值，同時將$file 賦值為my.file.txt 。(空值及非空值時不作处理) ${file:=my.file.txt} ：若$file 沒設定或為空值，則使用my.file.txt 作傳回值，同時將$file 賦值為my.file.txt 。(非空值時不作处理) ${file?my.file.txt} ：若$file 沒設定，則將my.file.txt 輸出至STDERR。(空值及非空值時不作处理) ${file:?my.file.txt} ：若$file 没设定或为空值，则将my.file.txt 输出至STDERR。(非空值時不作处理) ${#var} 可计算出变量值的长度： ${#file} 可得到27 ，因为/dir1/dir2/dir3/my.file.txt 是27个字节 5.条件判断式if [ 条件判断式 ]; then ... fi 如： if [ &quot;$Yn&quot; == &quot;Y&quot; ] || [ &quot;$yn&quot; == &quot;y&quot; ]; then echo &quot;OK&quot; exit 0 fi *中括号两边加空格，变量也要加双引号 if [ situation1 ]; then ... elif [ situation2 ]; then ... else ... fi ####实例练习 计算毕业时间 !/bin/bash # program: # You input your graduation date, I calculate how many days before you graduate. # History: # 2018/7/12 yyqiao 1.0 version #1. 输入说明 echo &quot;This program will try to calculate:&quot; echo &quot;How many days before your graduation date...&quot; read -p &quot;Please input your graduation data (YYYYMMDD ex&gt;20180712):&quot; date2 #2. 判断输入内容格式是否正确 date_d=$(echo $date2 | grep &apos;[0-9]\{8\}&apos;) #是否有8位数字 if [ &quot;$date_d&quot; == &quot;&quot; ]; then echo &quot;Wrong input&quot; exit 1 fi #3.计算日期 declare -i date_gra=`date --date=&quot;$date_d&quot; +%s` declare -i date_now=`date +%s` declare -i date_total=$(($date_gra-$date_now)) declare -i date_d=$(($date_total/60/60/24)) if [ &quot;$date_total&quot; -gt &quot;0&quot; ]; then declare -i date_h=$(($date_total-$date_d*60*60*24)/60/60) echo &quot;You will graduate after $date_d days and $date_h hours&quot; else echo &quot;You had been graduation before: &quot; $((-1*$date_d)) &quot; ago&quot; fi 6.function 功能function funName () { ... } 7.循环loopwhile [ condition ] do ... done until [ condition ] do ... done for var in con1 con2 con3 ... do ... done 如： for vari in $(seq 1 100) do ... done filelist =$(ls $dir) for file in filelist do ... done for ((初始值;限制值;执行步长)) do ... done 如： for(( i=1; i&lt;=9; i=i+1 )) do ... done 8.shell script 调试sh [-nvx] script.sh -n: 不要执行，仅检查语法 -v: 执行前先将script内容输出到屏幕上 -x: 将script显示在频幕上]]></content>
@@ -8,8 +22,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>linux</tag>
+        <tag>工具</tag>
         <tag>shell</tag>
       </tags>
   </entry>
@@ -21,8 +35,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>linux</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -33,9 +47,9 @@
         <category>工作</category>
       </categories>
       <tags>
-        <tag>linux</tag>
         <tag>工作</tag>
         <tag>软件</tag>
+        <tag>linux</tag>
         <tag>BC-Linux</tag>
       </tags>
   </entry>
@@ -47,8 +61,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>linux</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
