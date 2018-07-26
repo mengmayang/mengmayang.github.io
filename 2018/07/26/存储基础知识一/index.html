@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解">
+<meta name="description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解 1. 几个基本概念 RAID  因为一块磁盘的容量和速度是有限的，">
 <meta name="keywords" content="存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="存储基础知识一">
 <meta property="og:url" content="http://yoursite.com/2018/07/26/存储基础知识一/index.html">
 <meta property="og:site_name" content="RunningSheep&#39;s BLOG">
-<meta property="og:description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解">
+<meta property="og:description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解 1. 几个基本概念 RAID  因为一块磁盘的容量和速度是有限的，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T09:11:22.754Z">
+<meta property="og:updated_time" content="2018-07-26T09:12:54.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="存储基础知识一">
-<meta name="twitter:description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解">
+<meta name="twitter:description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解 1. 几个基本概念 RAID  因为一块磁盘的容量和速度是有限的，">
 
 
 
@@ -410,6 +410,11 @@
       
         <h2 id="存储基础知识一-块存储，文件存储，对象存储"><a href="#存储基础知识一-块存储，文件存储，对象存储" class="headerlink" title="存储基础知识一 块存储，文件存储，对象存储"></a>存储基础知识一 块存储，文件存储，对象存储</h2><p>身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。</p>
 <p>因为涉及到一些概念，故而需要对一些必要的知识有所了解</p>
+<h3 id="1-几个基本概念"><a href="#1-几个基本概念" class="headerlink" title="1. 几个基本概念"></a>1. 几个基本概念</h3><ol>
+<li><p>RAID</p>
+<p> 因为一块磁盘的容量和速度是有限的，对于一些特别大的数据，无论是存储还是读写速度，一块盘都不能满足。因此，RAID应运而生，Redundant Array of Independent Disks 有独立的磁盘组成的具有冗余特性的阵列。 RAID 将多个磁盘整合成逻辑上连续的存储区，经过RAID计算，可以再分成多个逻辑盘。</p>
+</li>
+</ol>
 
       
     </div>
@@ -648,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储基础知识一-块存储，文件存储，对象存储"><span class="nav-number">1.</span> <span class="nav-text">存储基础知识一 块存储，文件存储，对象存储</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储基础知识一-块存储，文件存储，对象存储"><span class="nav-number">1.</span> <span class="nav-text">存储基础知识一 块存储，文件存储，对象存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-几个基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1. 几个基本概念</span></a></li></ol></li></ol></div>
             
 
           </div>
