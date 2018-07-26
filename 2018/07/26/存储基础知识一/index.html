@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="RunningSheep&#39;s BLOG">
 <meta property="og:description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解 1. 几个基本概念RAID因为一块磁盘的容量和速度是有限的，对于一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T10:01:12.258Z">
+<meta property="og:updated_time" content="2018-07-26T10:36:49.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="存储基础知识一">
 <meta name="twitter:description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解 1. 几个基本概念RAID因为一块磁盘的容量和速度是有限的，对于一">
@@ -411,20 +411,16 @@
         <h2 id="存储基础知识一-块存储，文件存储，对象存储"><a href="#存储基础知识一-块存储，文件存储，对象存储" class="headerlink" title="存储基础知识一 块存储，文件存储，对象存储"></a>存储基础知识一 块存储，文件存储，对象存储</h2><p>身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。</p>
 <p>因为涉及到一些概念，故而需要对一些必要的知识有所了解</p>
 <h3 id="1-几个基本概念"><a href="#1-几个基本概念" class="headerlink" title="1. 几个基本概念"></a>1. 几个基本概念</h3><h6 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a>RAID</h6><p>因为一块磁盘的容量和速度是有限的，对于一些特别大的数据，无论是存储还是读写速度，一块盘都不能满足。因此，RAID应运而生，Redundant Array of Independent Disks 有独立的磁盘组成的具有冗余特性的阵列。 RAID 将多个磁盘整合成逻辑上连续的存储区，经过RAID计算，可以再分成多个逻辑盘。</p>
-<h6 id="LVM"><a href="#LVM" class="headerlink" title="LVM"></a>LVM</h6><pre><code>Logical Volumn Management 卷管理层。对RAID控制器提交的逻辑盘加以组织再分配的软件。将OS识别到的磁盘逻辑上连续编址，再分割成小块，再组合成逻辑卷。像揉面团，哪里不够补一点。
-</code></pre><h6 id="FC-协议"><a href="#FC-协议" class="headerlink" title="FC 协议"></a>FC 协议</h6><pre><code>硬盘从内置主机到解放成独立设备，可以放在巨大的机柜里，通过并行SCSI总线与主机相连。但是通过SCSI总线连接的方式属于物理连接，一旦通信双方距离远就不合适了。面向无连接的FC交换网络代替并行SCSI总线是必然的。使存储系统和主机系统可以远隔千里进行通信。
-
-使用FC协议，盘阵前端可以同时提供多个主机接口。同样，盘阵后端也采用FC协议，可以接入更加多的磁盘。
-
-前端后端都采用FC协议实现网络化，意味着，一个个磁盘相当于网络上的节点，可以彻底实现网络化存储
-</code></pre><h6 id="DAS"><a href="#DAS" class="headerlink" title="DAS"></a>DAS</h6><pre><code>开放系统的直连式存储(Direct-Attached Storage），主机与存储设备之间采用SCSI连接。但随着磁盘阵列不断扩大，SCSI会成为IO瓶颈。
-</code></pre><h6 id="SAN"><a href="#SAN" class="headerlink" title="SAN"></a>SAN</h6><pre><code>存储区域网络（Storage Area Network）这个网络专门用来给主机连接存储设备用的，该网络中的元件都是为了让主机更好的访问存储设备。一般会采光纤来支持FC协议。
-</code></pre><h6 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h6><pre><code>网络附加存储（Network Attached Storage）指带有集中式文件系统功能的盘阵。将文件系统的功能迁移到磁盘阵列上，让磁盘自己管理存储空间。对外提供统一的用户接口，使用者不用再记录某某文件和券上扇区或者簇块的对应关系。
-
-NAS与SAN的区别主要不是使用以太网和TCP/IP协议，而是，SAN是一个基于FC网络上的磁盘，NAS是一个以太网络上的文件系统。
-
-网络文件系统与本地文件系统唯一的区别就是传输方式从主板上的导线变成了以太网络。
-</code></pre><p>###2. 块存储</p>
+<h6 id="LVM"><a href="#LVM" class="headerlink" title="LVM"></a>LVM</h6><p>Logical Volumn Management 卷管理层。对RAID控制器提交的逻辑盘加以组织再分配的软件。将OS识别到的磁盘逻辑上连续编址，再分割成小块，再组合成逻辑卷。像揉面团，哪里不够补一点。</p>
+<h6 id="FC-协议"><a href="#FC-协议" class="headerlink" title="FC 协议"></a>FC 协议</h6><p>硬盘从内置主机到解放成独立设备，可以放在巨大的机柜里，通过并行SCSI总线与主机相连。但是通过SCSI总线连接的方式属于物理连接，一旦通信双方距离远就不合适了。面向无连接的FC交换网络代替并行SCSI总线是必然的。使存储系统和主机系统可以远隔千里进行通信。</p>
+<p>使用FC协议，盘阵前端可以同时提供多个主机接口。同样，盘阵后端也采用FC协议，可以接入更加多的磁盘。</p>
+<p>前端后端都采用FC协议实现网络化，意味着，一个个磁盘相当于网络上的节点，可以彻底实现网络化存储</p>
+<h6 id="DAS"><a href="#DAS" class="headerlink" title="DAS"></a>DAS</h6><p>开放系统的直连式存储(Direct-Attached Storage），主机与存储设备之间采用SCSI连接。但随着磁盘阵列不断扩大，SCSI会成为IO瓶颈。</p>
+<h6 id="SAN"><a href="#SAN" class="headerlink" title="SAN"></a>SAN</h6><p>存储区域网络（Storage Area Network）这个网络专门用来给主机连接存储设备用的，该网络中的元件都是为了让主机更好的访问存储设备。一般会采光纤来支持FC协议。</p>
+<h6 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h6><p>网络附加存储（Network Attached Storage）指带有集中式文件系统功能的盘阵。将文件系统的功能迁移到磁盘阵列上，让磁盘自己管理存储空间。对外提供统一的用户接口，使用者不用再记录某某文件和券上扇区或者簇块的对应关系。</p>
+<p>NAS与SAN的区别主要不是使用以太网和TCP/IP协议，而是，SAN是一个基于FC网络上的磁盘，NAS是一个以太网络上的文件系统。</p>
+<p>网络文件系统与本地文件系统唯一的区别就是传输方式从主板上的导线变成了以太网络。</p>
+<p>###2. 块存储</p>
 <p>了解了以上概念，下面可以学习块存储、文件存储和对象存储了。</p>
 <p>块存储主要就是将裸磁盘空间整个映射给主机使用。当然这个磁盘空间是通过RAID或者LVM划分出来的逻辑盘。与内置硬盘方式无异。</p>
 <p>因为使用了RAID/LVM技术，对数据提供了保护，也提升了读写效率。通常块存储会采用SAN或者DAS架构组网，提升传输速度和读写速度；但是使用SAN架构组网时，通常涉及到FC协议，要买光纤交换机比较贵。</p>
