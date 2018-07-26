@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[HTML知识整理]]></title>
+    <url>%2F2018%2F07%2F20%2FHTML%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[BCLinux安装教程新篇]]></title>
     <url>%2F2018%2F07%2F19%2FBCLinux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E6%96%B0%E7%AF%87%2F</url>
     <content type="text"><![CDATA[本地虚拟机安装BC-Linux 新篇因为上一篇的描述过于简单，以至于有同学反应可读性比较差，而且关于NAT还是桥接的选择可能会遇到问题，故新篇以全图的方式来展示安装过程。 1. 开启虚拟支持这一步上一篇有讲win10如何开启虚拟支持，可以自行百度。 2. 安装BC-Linux 7.3主机开始虚拟支持之后，就可以开始安装虚拟机了 首先安装VMWare(也可以选择其他Virualbox等)，VMWare安装在主机上，虚拟机可以选择安装在硬盘上。 文件-&gt;新建虚拟机-&gt;自定义（高级） 下一步 下一步 下一步 选择位置，可选移动硬盘；给虚拟机起名字 选择处理器数量 分配内存，2G可以 默认使用NAT，如果需要主机浏览器查看虚拟机上apache目录选择桥接 下一步 下一步 创建新的虚拟磁盘 分配磁盘大小并存储为单个文件 命名磁盘文件 完成 选择CD/DVD-&gt;选择系统镜像BC-Linux-xxxx.iso 开机 开始安装，选择语言,安装过程可以申请root用户以及其他用户 可选我要配置分区，自定义分区 安装完成后重启 查看ip地址，如图25，未显示ip su root 切换管理员用户 修改/etc/sysconfig/network-scripts/ifcfg-ens33文件中的ONBOOT修改为yes 再次查看ip，172.20.5.209 可以ping 通主机了]]></content>
@@ -90,8 +95,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>网络</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
