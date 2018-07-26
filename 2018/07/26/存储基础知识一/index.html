@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="RunningSheep&#39;s BLOG">
 <meta property="og:description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解 1. 几个基本概念RAID因为一块磁盘的容量和速度是有限的，对于一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T10:36:49.210Z">
+<meta property="og:updated_time" content="2018-07-26T10:42:07.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="存储基础知识一">
 <meta name="twitter:description" content="存储基础知识一 块存储，文件存储，对象存储身为存储组的一员，如何能不了解存储，啃了几周的《大话存储》，虽然还是一知半解，但好歹对存储say hello了。比较重要的是块存储，文件存储和对象存储了哇，毕竟组内工作也是这么开展的，但读了培训资料还是觉得晦涩难懂，有必要系统梳理一下。 因为涉及到一些概念，故而需要对一些必要的知识有所了解 1. 几个基本概念RAID因为一块磁盘的容量和速度是有限的，对于一">
@@ -420,17 +420,14 @@
 <h6 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h6><p>网络附加存储（Network Attached Storage）指带有集中式文件系统功能的盘阵。将文件系统的功能迁移到磁盘阵列上，让磁盘自己管理存储空间。对外提供统一的用户接口，使用者不用再记录某某文件和券上扇区或者簇块的对应关系。</p>
 <p>NAS与SAN的区别主要不是使用以太网和TCP/IP协议，而是，SAN是一个基于FC网络上的磁盘，NAS是一个以太网络上的文件系统。</p>
 <p>网络文件系统与本地文件系统唯一的区别就是传输方式从主板上的导线变成了以太网络。</p>
-<p>###2. 块存储</p>
-<p>了解了以上概念，下面可以学习块存储、文件存储和对象存储了。</p>
+<h3 id="2-块存储"><a href="#2-块存储" class="headerlink" title="2. 块存储"></a>2. 块存储</h3><p>了解了以上概念，下面可以学习块存储、文件存储和对象存储了。</p>
 <p>块存储主要就是将裸磁盘空间整个映射给主机使用。当然这个磁盘空间是通过RAID或者LVM划分出来的逻辑盘。与内置硬盘方式无异。</p>
 <p>因为使用了RAID/LVM技术，对数据提供了保护，也提升了读写效率。通常块存储会采用SAN或者DAS架构组网，提升传输速度和读写速度；但是使用SAN架构组网时，通常涉及到FC协议，要买光纤交换机比较贵。</p>
 <p>不做集群情况下，主机之间无法共享数据。<br>不同操作系统的主机间也无法共享数据。</p>
-<p>###3. 文件存储</p>
-<p>为了克服主机之间无法共享的问题，有了文件存储。<br>在NAS网络中，磁盘阵列上有一套集中式文件系统自己管理存储空间，不需要主机操作系统的参与，而主机与盘阵的集中式文件系统的交互通过网络来传递数据（以太网+TCP/IP）作为底层传输网络，而上层逻辑称为网络文件系统（相对于本地文件系统来讲）又名远程调用时文件系统RPC FS（Remote Procedure Call File System），微软的网络文件系统称为CIFS（Common Internet File System），Unix/Linux的称为NFS（Network File System）。这种文件系统逻辑不在本地运行而在网络上的其他节点运行。</p>
+<h3 id="3-文件存储"><a href="#3-文件存储" class="headerlink" title="3. 文件存储"></a>3. 文件存储</h3><p>为了克服主机之间无法共享的问题，有了文件存储。<br>在NAS网络中，磁盘阵列上有一套集中式文件系统自己管理存储空间，不需要主机操作系统的参与，而主机与盘阵的集中式文件系统的交互通过网络来传递数据（以太网+TCP/IP）作为底层传输网络，而上层逻辑称为网络文件系统（相对于本地文件系统来讲）又名远程调用时文件系统RPC FS（Remote Procedure Call File System），微软的网络文件系统称为CIFS（Common Internet File System），Unix/Linux的称为NFS（Network File System）。这种文件系统逻辑不在本地运行而在网络上的其他节点运行。</p>
 <p>这种存储方式不光磁盘和卷在远程节点，连文件系统也在远程节点。</p>
 <p>*虽然FTP和NFS都属于文件存储，但是FTP是将远程文件先获取到本地再进行IO，不属于NAS</p>
-<p>###4. 对象存储</p>
-<p>相对于SAN和NAS两种主流网络存储架构的新的网络存储架构。基于对象存储技术的设备就是对象存储设备OSD（Object-based Storage Device）</p>
+<h3 id="4-对象存储"><a href="#4-对象存储" class="headerlink" title="4. 对象存储"></a>4. 对象存储</h3><p>相对于SAN和NAS两种主流网络存储架构的新的网络存储架构。基于对象存储技术的设备就是对象存储设备OSD（Object-based Storage Device）</p>
 <p>OBS（Object-Based Storage）对象存储综合了NAS和SAN的有点，同时具有SAN的告诉直接访问和NAS的分布式数据共享的优势，高性能，高可靠性，跨平台以及安全的数据共享的存储体系结构。</p>
 <p>为什么要搞对象存储？<br>因为块存储虽然快，但是不能数据共享，文件存储可以共享文件，但是传输慢。</p>
 <p>什么是OBS？<br>多台服务器内置大容量硬盘，装上对象存储软件，在搞几台服务器作为管理节点，安装对象存储管理软件。管理节点可以管理其他服务器对外提供读写访问功能。</p>
@@ -677,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储基础知识一-块存储，文件存储，对象存储"><span class="nav-number">1.</span> <span class="nav-text">存储基础知识一 块存储，文件存储，对象存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-几个基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1. 几个基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#RAID"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">RAID</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LVM"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">LVM</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#FC-协议"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">FC 协议</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DAS"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">DAS</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SAN"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">SAN</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#NAS"><span class="nav-number">1.1.0.0.6.</span> <span class="nav-text">NAS</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储基础知识一-块存储，文件存储，对象存储"><span class="nav-number">1.</span> <span class="nav-text">存储基础知识一 块存储，文件存储，对象存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-几个基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1. 几个基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#RAID"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">RAID</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LVM"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">LVM</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#FC-协议"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">FC 协议</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DAS"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">DAS</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SAN"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">SAN</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#NAS"><span class="nav-number">1.1.0.0.6.</span> <span class="nav-text">NAS</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-块存储"><span class="nav-number">1.2.</span> <span class="nav-text">2. 块存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-文件存储"><span class="nav-number">1.3.</span> <span class="nav-text">3. 文件存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-对象存储"><span class="nav-number">1.4.</span> <span class="nav-text">4. 对象存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
