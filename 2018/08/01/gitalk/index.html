@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/08/01/gitalk/gitalk/图一.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/01/gitalk/gitalk/图二.png">
-<meta property="og:updated_time" content="2018-08-01T11:37:41.391Z">
+<meta property="og:updated_time" content="2018-08-01T11:47:26.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitalk">
 <meta name="twitter:description" content="hexo + gitalk 给博客添加评论系统由于第三方评论系统基本全部扑街，所以不得不想其他对策，网上也有人提出搭建自己的第三方评论系统，但是需要自己有VPS呀，或者阿里云申请云主机？no，没钱！ 然后今天看到了gitalk，一个基于Github Issue和Preact 开发的评论插件。虽然还有一些小问题，但是从此我的博客有评论系统了，撒花~~ 详情Demo可见：https://gitalk.">
@@ -448,17 +448,8 @@
 <pre><code>{% elseif theme.gitalk.enable %}
      &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;
 </code></pre><p>我因为开启了disqus的count功能，所以disqus的enable是true，因此在增加gitalk的时候最后几行是：</p>
-<pre><code>  {% elseif theme.valine.appid and theme.valine.appkey %}
-    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;
-    &lt;/div&gt;
-  {% endif %}
-
-  {% if theme.gitalk.distractionFreeMode %}
-	    <div class="comments" id="gitalk-container"></div>
-	  {% endif %}
-
-{% endif %} //对应整体的if，也是文件末尾
-</code></pre><h3 id="4-index-swig"><a href="#4-index-swig" class="headerlink" title="4.index.swig"></a>4.index.swig</h3><p>修改layout/_third-party/comments/index.swig，在最后一行添加内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% elseif theme.valine.appid and theme.valine.appkey %&#125;</span><br><span class="line">    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">  &#123;% if theme.gitalk.distractionFreeMode %&#125;</span><br><span class="line">    &lt;div class=&quot;comments&quot; id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endif %&#125; //对应整体的if，也是文件末尾</span><br></pre></td></tr></table></figure>
+<h3 id="4-index-swig"><a href="#4-index-swig" class="headerlink" title="4.index.swig"></a>4.index.swig</h3><p>修改layout/_third-party/comments/index.swig，在最后一行添加内容：</p>
 <pre><code>{% include 'gitalk.swig' %}
 </code></pre><h3 id="5-gitalk-styl"><a href="#5-gitalk-styl" class="headerlink" title="5.gitalk.styl"></a>5.gitalk.styl</h3><p>新建/source/css/_common/components/third-party/gitalk.styl文件，添加内容：</p>
 <pre><code>.gt-header a, .gt-comments a, .gt-popup a
