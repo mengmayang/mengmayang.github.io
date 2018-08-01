@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[gitalk]]></title>
+    <url>%2F2018%2F08%2F01%2Fgitalk%2F</url>
+    <content type="text"><![CDATA[hexo + gitalk 给博客添加评论系统由于第三方评论系统基本全部扑街，所以不得不想其他对策，网上也有人提出搭建自己的第三方评论系统，但是需要自己有VPS呀，或者阿里云申请云主机？no，没钱！ 然后今天看到了gitalk，一个基于Github Issue和Preact 开发的评论插件。虽然还有一些小问题，但是从此我的博客有评论系统了，撒花~~ 详情Demo可见：https://gitalk.github.io/ 具体操作步骤如下： 1.申请github应用在GitHub上注册新应用，链接：https://github.com/settings/applications/new 参数说明：Application name： # 应用名称，随意Homepage URL： # 网站URL，如https://mengmayang.github.ioApplication description # 描述，随意Authorization callback URL：# 网站URL，https://mengmayang.github.io 然后你会得到Client ID和Client Secret 2.新增gitalk.swig新建/layout/_third-party/comments/gitalk.swig文件，并添加内容： {% if not (theme.duoshuo and theme.duoshuo.shortname) and not theme.duoshuo_shortname %} {% if theme.gitalk.enable %} {% if theme.gitalk.distractionFreeMode %} var gitalk = new Gitalk({ clientID: '{{theme.gitalk.clientID}}', clientSecret: '{{theme.gitalk.clientSecret}}', id: window.location.pathname, repo: '{{theme.gitalk.repo}}', owner: '{{theme.gitalk.owner}}', admin: '{{theme.gitalk.admin}}', distractionFreeMode: '{{theme.gitalk.distractionFreeMode}}', }) gitalk.render('gitalk-container') {% endif %} {% endif %} {% endif %} 3.comments.swig修改/layout/_partials/comments.swig，添加内容如下，与前面的elseif同一级别上： {% elseif theme.gitalk.enable %} &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt; 我因为开启了disqus的count功能，所以disqus的enable是true，因此在增加gitalk的时候最后几行是： {% elseif theme.valine.appid and theme.valine.appkey %} &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt; &lt;/div&gt; {% endif %} {% if theme.gitalk.distractionFreeMode %} {% endif %} {% endif %} //对应整体的if，也是文件末尾 4.index.swig修改layout/_third-party/comments/index.swig，在最后一行添加内容： {% include 'gitalk.swig' %} 5.gitalk.styl新建/source/css/_common/components/third-party/gitalk.styl文件，添加内容： .gt-header a, .gt-comments a, .gt-popup a border-bottom: none; .gt-container .gt-popup .gt-action.is--active:before top: 0.7em; 6.third-party.styl修改/source/css/_common/components/third-party/third-party.styl，在最后一行上添加内容，引入样式： @import &quot;gitalk&quot;; 7.修改_config.yml在主题配置文件next/_config.yml中添加如下内容： # Gitalk gitalk://这边一定要定格 enable: true clientID: &quot;xxxxxxxxxxxxxxxxx&quot; clientSecret: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot; repo: &quot;myblog_comment&quot; owner: &quot;mengmayang&quot; admin: &quot;mengmayang&quot; distractionFreeMode: true 8.安装md5npm install md5 9.关于评论初始化和ERROR的问题 初始化需要mengmayang授权，所以每一篇博客的评论都需要自己进行初始化 目前长标题的博客会有Error: Validation Failed的问题，短标题则没有。 目前还没有解决的好办法，只能取短一点的标题喽~~ 参考https://www.jianshu.com/p/0bca03b43157 https://asdfv1929.github.io/2018/01/20/gitalk/ https://github.com/geedme/gitalk/issues/3 https://github.com/gitalk/gitalk/issues/115#event-1539518527 https://github.com/gitalk/gitalk/issues/102]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>工具</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[利用gh-pages分支来在github中展示demo]]></title>
     <url>%2F2018%2F07%2F31%2F%E5%88%A9%E7%94%A8gh-pages%E5%88%86%E6%94%AF%E6%9D%A5%E5%9C%A8github%E4%B8%AD%E5%B1%95%E7%A4%BAdemo%2F</url>
     <content type="text"><![CDATA[利用gh-pages 分支来在github中展示demo1.新建一个名为demo的仓库2.git clone到本地3.创建index.html&lt;!DOCTYPE html&gt; &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; &lt;title&gt;Demo of yyqiao&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Hello World!&lt;/h1&gt; &lt;/body&gt; &lt;/html&gt; 4.切换分支git checkout -b gh-pages 5.将master分支下的内容推送到远程gh-pages分支git push origin master:gh-pages *远程如果没有gh-pages分支会新创建 6.访问https://mengmayang.github.io/demo/ 亲测可行~~]]></content>
