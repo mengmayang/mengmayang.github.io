@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/08/01/gitalk/gitalk/图一.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/01/gitalk/gitalk/图二.png">
-<meta property="og:updated_time" content="2018-08-01T11:47:26.239Z">
+<meta property="og:updated_time" content="2018-08-01T11:50:43.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitalk">
 <meta name="twitter:description" content="hexo + gitalk 给博客添加评论系统由于第三方评论系统基本全部扑街，所以不得不想其他对策，网上也有人提出搭建自己的第三方评论系统，但是需要自己有VPS呀，或者阿里云申请云主机？no，没钱！ 然后今天看到了gitalk，一个基于Github Issue和Preact 开发的评论插件。虽然还有一些小问题，但是从此我的博客有评论系统了，撒花~~ 详情Demo可见：https://gitalk.">
@@ -419,57 +419,21 @@
 <p>参数说明：<br>Application name： # 应用名称，随意<br>Homepage URL： # 网站URL，如<a href="https://mengmayang.github.io" target="_blank" rel="noopener">https://mengmayang.github.io</a><br>Application description # 描述，随意<br>Authorization callback URL：# 网站URL，<a href="https://mengmayang.github.io" target="_blank" rel="noopener">https://mengmayang.github.io</a></p>
 <p>然后你会得到Client ID和Client Secret</p>
 <h3 id="2-新增gitalk-swig"><a href="#2-新增gitalk-swig" class="headerlink" title="2.新增gitalk.swig"></a>2.新增gitalk.swig</h3><p>新建/layout/_third-party/comments/gitalk.swig文件，并添加内容：</p>
-<pre><code>{% if not (theme.duoshuo and theme.duoshuo.shortname) and not theme.duoshuo_shortname %}
-	
-	  {% if theme.gitalk.enable %}
-	
-	    {% if theme.gitalk.distractionFreeMode  %}
-	      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-	      <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-	      <script src="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js"></script>
-	
-	      <script type="text/javascript">
-	          var gitalk = new Gitalk({
-	            clientID:  '{{theme.gitalk.clientID}}',
-	            clientSecret: '{{theme.gitalk.clientSecret}}',
-	            id: window.location.pathname,
-	            repo: '{{theme.gitalk.repo}}',
-	            owner: '{{theme.gitalk.owner}}',
-	            admin: '{{theme.gitalk.admin}}',
-	            distractionFreeMode: '{{theme.gitalk.distractionFreeMode}}',
-	          })
-	          gitalk.render('gitalk-container')
-	      </script>
-	    {% endif %}
-
-  {% endif %}
-{% endif %}
-</code></pre><h3 id="3-comments-swig"><a href="#3-comments-swig" class="headerlink" title="3.comments.swig"></a>3.comments.swig</h3><p>修改/layout/_partials/comments.swig，添加内容如下，与前面的elseif同一级别上：</p>
-<pre><code>{% elseif theme.gitalk.enable %}
-     &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;
-</code></pre><p>我因为开启了disqus的count功能，所以disqus的enable是true，因此在增加gitalk的时候最后几行是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;% if not (theme.duoshuo and theme.duoshuo.shortname) and not theme.duoshuo_shortname %&#125;</span><br><span class="line"></span><br><span class="line">  &#123;% if theme.gitalk.enable %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;% if theme.gitalk.distractionFreeMode  %&#125;</span><br><span class="line">      &lt;link rel=&apos;stylesheet&apos; href=&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;&gt;</span><br><span class="line">      &lt;script src=&quot;https://unpkg.com/gitalk/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">      &lt;script src=&quot;https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">      &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">          var gitalk = new Gitalk(&#123;</span><br><span class="line">            clientID:  &apos;&#123;&#123;theme.gitalk.clientID&#125;&#125;&apos;,</span><br><span class="line">            clientSecret: &apos;&#123;&#123;theme.gitalk.clientSecret&#125;&#125;&apos;,</span><br><span class="line">            id: window.location.pathname,</span><br><span class="line">            repo: &apos;&#123;&#123;theme.gitalk.repo&#125;&#125;&apos;,</span><br><span class="line">            owner: &apos;&#123;&#123;theme.gitalk.owner&#125;&#125;&apos;,</span><br><span class="line">            admin: &apos;&#123;&#123;theme.gitalk.admin&#125;&#125;&apos;,</span><br><span class="line">            distractionFreeMode: &apos;&#123;&#123;theme.gitalk.distractionFreeMode&#125;&#125;&apos;,</span><br><span class="line">          &#125;)</span><br><span class="line">          gitalk.render(&apos;gitalk-container&apos;)</span><br><span class="line">      &lt;/script&gt;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-comments-swig"><a href="#3-comments-swig" class="headerlink" title="3.comments.swig"></a>3.comments.swig</h3><p>修改/layout/_partials/comments.swig，添加内容如下，与前面的elseif同一级别上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line">		&lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>我因为开启了disqus的count功能，所以disqus的enable是true，因此在增加gitalk的时候最后几行是：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% elseif theme.valine.appid and theme.valine.appkey %&#125;</span><br><span class="line">    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">  &#123;% if theme.gitalk.distractionFreeMode %&#125;</span><br><span class="line">    &lt;div class=&quot;comments&quot; id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endif %&#125; //对应整体的if，也是文件末尾</span><br></pre></td></tr></table></figure>
 <h3 id="4-index-swig"><a href="#4-index-swig" class="headerlink" title="4.index.swig"></a>4.index.swig</h3><p>修改layout/_third-party/comments/index.swig，在最后一行添加内容：</p>
-<pre><code>{% include 'gitalk.swig' %}
-</code></pre><h3 id="5-gitalk-styl"><a href="#5-gitalk-styl" class="headerlink" title="5.gitalk.styl"></a>5.gitalk.styl</h3><p>新建/source/css/_common/components/third-party/gitalk.styl文件，添加内容：</p>
-<pre><code>.gt-header a, .gt-comments a, .gt-popup a
-  border-bottom: none;
-.gt-container .gt-popup .gt-action.is--active:before
-  top: 0.7em;
-</code></pre><h3 id="6-third-party-styl"><a href="#6-third-party-styl" class="headerlink" title="6.third-party.styl"></a>6.third-party.styl</h3><p>修改/source/css/_common/components/third-party/third-party.styl，在最后一行上添加内容，引入样式：</p>
-<pre><code>@import &quot;gitalk&quot;;
-</code></pre><h3 id="7-修改-config-yml"><a href="#7-修改-config-yml" class="headerlink" title="7.修改_config.yml"></a>7.修改_config.yml</h3><p>在主题配置文件next/_config.yml中添加如下内容：</p>
-<pre><code># Gitalk
-gitalk://这边一定要定格
-  enable: true
-  clientID: &quot;xxxxxxxxxxxxxxxxx&quot;
-  clientSecret: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;
-  repo: &quot;myblog_comment&quot;
-  owner: &quot;mengmayang&quot;
-  admin: &quot;mengmayang&quot;
-  distractionFreeMode: true
-</code></pre><h3 id="8-安装md5"><a href="#8-安装md5" class="headerlink" title="8.安装md5"></a>8.安装md5</h3><pre><code>npm install md5
-</code></pre><h3 id="9-关于评论初始化和ERROR的问题"><a href="#9-关于评论初始化和ERROR的问题" class="headerlink" title="9.关于评论初始化和ERROR的问题"></a>9.关于评论初始化和ERROR的问题</h3><p><img src="gitalk/图二.png" alt="图二"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;% include &apos;gitalk.swig&apos; %&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-gitalk-styl"><a href="#5-gitalk-styl" class="headerlink" title="5.gitalk.styl"></a>5.gitalk.styl</h3><p>新建/source/css/_common/components/third-party/gitalk.styl文件，添加内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.gt-header a, .gt-comments a, .gt-popup a</span><br><span class="line">  border-bottom: none;</span><br><span class="line">.gt-container .gt-popup .gt-action.is--active:before</span><br><span class="line">  top: 0.7em;</span><br></pre></td></tr></table></figure>
+<h3 id="6-third-party-styl"><a href="#6-third-party-styl" class="headerlink" title="6.third-party.styl"></a>6.third-party.styl</h3><p>修改/source/css/_common/components/third-party/third-party.styl，在最后一行上添加内容，引入样式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@import &quot;gitalk&quot;;</span><br></pre></td></tr></table></figure>
+<h3 id="7-修改-config-yml"><a href="#7-修改-config-yml" class="headerlink" title="7.修改_config.yml"></a>7.修改_config.yml</h3><p>在主题配置文件next/_config.yml中添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line">gitalk://这边一定要定格</span><br><span class="line">  enable: true</span><br><span class="line">  clientID: &quot;xxxxxxxxxxxxxxxxx&quot;</span><br><span class="line">  clientSecret: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span><br><span class="line">  repo: &quot;myblog_comment&quot;</span><br><span class="line">  owner: &quot;mengmayang&quot;</span><br><span class="line">  admin: &quot;mengmayang&quot;</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
+<h3 id="8-安装md5"><a href="#8-安装md5" class="headerlink" title="8.安装md5"></a>8.安装md5</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install md5</span><br></pre></td></tr></table></figure>
+<h3 id="9-关于评论初始化和ERROR的问题"><a href="#9-关于评论初始化和ERROR的问题" class="headerlink" title="9.关于评论初始化和ERROR的问题"></a>9.关于评论初始化和ERROR的问题</h3><p><img src="gitalk/图二.png" alt="图二"></p>
 <pre><code>初始化需要mengmayang授权，所以每一篇博客的评论都需要自己进行初始化
 
 目前长标题的博客会有Error: Validation Failed的问题，短标题则没有。
