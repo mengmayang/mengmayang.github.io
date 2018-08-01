@@ -86,13 +86,13 @@
 <meta property="og:site_name" content="RunningSheep&#39;s BLOG">
 <meta property="og:description" content="hexo + gitalk 给博客添加评论系统由于第三方评论系统基本全部扑街，所以不得不想其他对策，网上也有人提出搭建自己的第三方评论系统，但是需要自己有VPS呀，或者阿里云申请云主机？no，没钱！ 然后今天看到了gitalk，一个基于Github Issue和Preact 开发的评论插件。虽然还有一些小问题，但是从此我的博客有评论系统了，撒花~~ 详情Demo可见：https://gitalk.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/08/01/gitalk/gitalk/figure1.png">
-<meta property="og:image" content="http://yoursite.com/2018/08/01/gitalk/gitalk/figure2.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/01/gitalk/figure1.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/01/gitalk/figure2.png">
 <meta property="og:updated_time" content="2018-08-01T12:06:35.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitalk">
 <meta name="twitter:description" content="hexo + gitalk 给博客添加评论系统由于第三方评论系统基本全部扑街，所以不得不想其他对策，网上也有人提出搭建自己的第三方评论系统，但是需要自己有VPS呀，或者阿里云申请云主机？no，没钱！ 然后今天看到了gitalk，一个基于Github Issue和Preact 开发的评论插件。虽然还有一些小问题，但是从此我的博客有评论系统了，撒花~~ 详情Demo可见：https://gitalk.">
-<meta name="twitter:image" content="http://yoursite.com/2018/08/01/gitalk/gitalk/figure1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/01/gitalk/figure1.png">
 
 
 
@@ -415,7 +415,7 @@
 <p>详情Demo可见：<a href="https://gitalk.github.io/" target="_blank" rel="noopener">https://gitalk.github.io/</a></p>
 <p>具体操作步骤如下：</p>
 <h3 id="1-申请github应用"><a href="#1-申请github应用" class="headerlink" title="1.申请github应用"></a>1.申请github应用</h3><p>在GitHub上注册新应用，链接：<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">https://github.com/settings/applications/new</a></p>
-<p><img src="gitalk/figure1.png" alt="figure1"></p>
+<p><img src="/2018/08/01/gitalk/figure1.png" alt="figure1"></p>
 <p>参数说明：<br>Application name： # 应用名称，随意<br>Homepage URL： # 网站URL，如<a href="https://mengmayang.github.io" target="_blank" rel="noopener">https://mengmayang.github.io</a><br>Application description # 描述，随意<br>Authorization callback URL：# 网站URL，<a href="https://mengmayang.github.io" target="_blank" rel="noopener">https://mengmayang.github.io</a></p>
 <p>然后你会得到Client ID和Client Secret</p>
 <h3 id="2-新增gitalk-swig"><a href="#2-新增gitalk-swig" class="headerlink" title="2.新增gitalk.swig"></a>2.新增gitalk.swig</h3><p>新建/layout/_third-party/comments/gitalk.swig文件，并添加内容：</p>
@@ -433,7 +433,7 @@
 <h3 id="7-修改-config-yml"><a href="#7-修改-config-yml" class="headerlink" title="7.修改_config.yml"></a>7.修改_config.yml</h3><p>在主题配置文件next/_config.yml中添加如下内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line">gitalk://这边一定要定格</span><br><span class="line">  enable: true</span><br><span class="line">  clientID: &quot;xxxxxxxxxxxxxxxxx&quot;</span><br><span class="line">  clientSecret: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span><br><span class="line">  repo: &quot;myblog_comment&quot;</span><br><span class="line">  owner: &quot;mengmayang&quot;</span><br><span class="line">  admin: &quot;mengmayang&quot;</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
 <h3 id="8-安装md5"><a href="#8-安装md5" class="headerlink" title="8.安装md5"></a>8.安装md5</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install md5</span><br></pre></td></tr></table></figure>
-<h3 id="9-关于评论初始化和ERROR的问题"><a href="#9-关于评论初始化和ERROR的问题" class="headerlink" title="9.关于评论初始化和ERROR的问题"></a>9.关于评论初始化和ERROR的问题</h3><p><img src="gitalk/figure2.png" alt="figure2"></p>
+<h3 id="9-关于评论初始化和ERROR的问题"><a href="#9-关于评论初始化和ERROR的问题" class="headerlink" title="9.关于评论初始化和ERROR的问题"></a>9.关于评论初始化和ERROR的问题</h3><p><img src="/2018/08/01/gitalk/figure2.png" alt="figure2"></p>
 <pre><code>初始化需要mengmayang授权，所以每一篇博客的评论都需要自己进行初始化
 
 目前长标题的博客会有Error: Validation Failed的问题，短标题则没有。
