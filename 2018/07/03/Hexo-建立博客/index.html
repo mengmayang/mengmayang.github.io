@@ -67,7 +67,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,前端," />
+  <meta name="keywords" content="前端,Hexo," />
 
 
 
@@ -79,7 +79,7 @@
 
 
 <meta name="description" content="Hexo 建立个人博客比较重要的几条命令 1.本地测试1hexo server 2.部署到github上1234567hexo deploy -gorhexo cleanhexo generatehexo deploy -g 表示部署在remote之前先生成静态文件 3.新建md文件1hexo new &quot;article_name&quot; 4.建tags，categories，about123hexo n">
-<meta name="keywords" content="Hexo,前端">
+<meta name="keywords" content="前端,Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 建立博客">
 <meta property="og:url" content="http://yoursite.com/2018/07/03/Hexo-建立博客/index.html">
@@ -464,9 +464,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
-          
             <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           
         </div>
       
@@ -890,13 +890,13 @@
           
       <link rel='stylesheet' href="https://unpkg.com/gitalk/dist/gitalk.css">
       <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-      <script src="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js"></script>
+      <script src="https://rawgit.com/qhh0205/78e9e0b1f3114db6737f3ed8cdd51d3a/raw/3894c5be5aa2378336b1f5ee0f296fa0b22d06e9/md5.min.js"></script>
 
       <script type="text/javascript">
           var gitalk = new Gitalk({
             clientID:  '1ccc2e4452b6098954c1', 
             clientSecret: '93a3ec72869365c6b1368651a05392b2f5dd1335',
-            id: window.location.pathname,
+            id: md5(window.location.pathname),
             repo: 'myblog_comment', 
             owner: 'mengmayang', 
             admin: 'mengmayang', 

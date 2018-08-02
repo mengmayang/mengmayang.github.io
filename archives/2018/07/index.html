@@ -994,13 +994,13 @@
           
       <link rel='stylesheet' href="https://unpkg.com/gitalk/dist/gitalk.css">
       <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-      <script src="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js"></script>
+      <script src="https://rawgit.com/qhh0205/78e9e0b1f3114db6737f3ed8cdd51d3a/raw/3894c5be5aa2378336b1f5ee0f296fa0b22d06e9/md5.min.js"></script>
 
       <script type="text/javascript">
           var gitalk = new Gitalk({
             clientID:  '1ccc2e4452b6098954c1', 
             clientSecret: '93a3ec72869365c6b1368651a05392b2f5dd1335',
-            id: window.location.pathname,
+            id: md5(window.location.pathname),
             repo: 'myblog_comment', 
             owner: 'mengmayang', 
             admin: 'mengmayang', 
