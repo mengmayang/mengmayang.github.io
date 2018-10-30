@@ -1,0 +1,21 @@
+<hr>
+<p>title: dataTableMove<br>date: 2018-10-30 16:29:30<br>tags: [前端]</p>
+<h2 id="categories-前端"><a href="#categories-前端" class="headerlink" title="categories: 前端"></a>categories: 前端</h2><h2 id="dataTableMove-表格拖动插件"><a href="#dataTableMove-表格拖动插件" class="headerlink" title="dataTableMove 表格拖动插件"></a>dataTableMove 表格拖动插件</h2><p>表格界插件dataTable基于jquery构造，在angular 1 中的经常会有冲突的现象。由于angular项目中需要一个表格实现类似的功能：首行固定，左右拖动时前n列固定，上下拖动时，只有首行固定。为了实现这个功能，我写了生平第一个小插件dataTableMove：<a href="https://github.com/mengmayang/dataTableMove">https://github.com/mengmayang/dataTableMove</a></p>
+<p>实现效果为 <a href="https://mengmayang.github.io/dataTableMove/dataTableMove.html">https://mengmayang.github.io/dataTableMove/dataTableMove.html</a></p>
+<p>虽然实现功能比较少，但还是很激动的。稍微体会了一下程序员创造世界的快乐。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>HTML 文件中需要有三个div，其中id为tableId的在divId内部，并且需要在文档尾部加载dataTableMove_v2.js，调用方法很简单，colFixedNum指定固定前面多少列，然后调用dataTableMove函数，dataTableMove(“divTable”,”mytable”,width,height,top,left,colFixedNum);</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"divId"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"tableId"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"position:relative;clear:both;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"dataTableMove_v2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span>
+<span class="undefined">    colFixedNum=2;</span>
+<span class="undefined">    dataTableMove("divTable","mytable",600,300,120,70,colFixedNum);</span>
+<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+
+
+</code></pre>
